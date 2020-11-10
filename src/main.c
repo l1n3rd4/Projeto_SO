@@ -1,44 +1,30 @@
-#include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "test.h"
 
-const char *DELIMITADOR = ",";
-//int readFile(FILE *input);
+extern void core_run(FILE *input, FILE *output);
 
 int main(int argc, char *argv[]){
 	FILE *input, *output;
 
+	input = fopen(argv[1], "r");
+	output = fopen("saida.txt", "w");
 
-//	input = fopen(argv[1], "r");
-//	output = fopen("saida.txt", "w");
+	if(input == NULL)
+		goto error_input_file;
 
-//	readFile(input);
-	printf("Hello  %s\n", S);
-//	fclose(input);
-//	fclose(output);
+	if(output == NULL)
+		goto error_output_file;
+
+	core_run(input, output);
+
+	fclose(input);
+	fclose(output);
+
+error_input_file:
+	printf("e");
+
+error_output_file:
+	printf("2");
 
 	return (0);
 }
-
-/*
-int readFile(FILE *input, long int position){
-	char *linha = NULL;
-	size_t inicio = 0;
-	ssize_t tamanho = 0;
-	char *token = NULL;
-
-	while((tamanho = getline(&linha, &inicio, input)) != -1){
-		linha[tamanho - 1] = '\0';
-		token = strtok(linha, DELIMITADOR);
-
-			while(token != NULL){
-					token = strtok(NULL, DELIMITADOR);
-					printf("%s", token);
-			}
-
-	}
-}
-
-*/
