@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.5)
+project(Projeto_SO VERSION 1.0.0)
+include_directories(include)
+file(GLOB_RECURSE SOURCES "src/*.c" main.c)
+add_executable(project ${SOURCES})
