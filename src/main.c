@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 }
 
 
-int readFile(FILE *input){
+int readFile(FILE *input, long int position){
 	char *linha = NULL;
 	size_t inicio = 0;
 	ssize_t tamanho = 0;
