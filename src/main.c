@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "utils.h"
 
 extern void core_run(FILE *input, FILE *output);
 
@@ -15,16 +16,18 @@ int main(int argc, char *argv[]){
 	if(output == NULL)
 		goto error_output_file;
 
-	core_run(input, output);
+//	core_run(input, output);
 
 	fclose(input);
 	fclose(output);
+	
+	return(EXIT_SUCCESS);
 
 error_input_file:
-	printf("e");
+	printf("%s\n", ERROR_INPUT_MESSAGE);
 
 error_output_file:
-	printf("2");
+	printf("%s\n", ERROR_OUTPUT_MESSAGE);
 
-	return (0);
+	return (EXIT_FAILURE);
 }
