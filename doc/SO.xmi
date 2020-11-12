@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMI xmlns:UML="http://schema.omg.org/spec/UML/1.4" xmi.version="1.2" verified="false" timestamp="2020-11-11T21:38:09">
+<XMI xmlns:UML="http://schema.omg.org/spec/UML/1.4" xmi.version="1.2" verified="false" timestamp="2020-11-11T21:48:09">
  <XMI.header>
   <XMI.documentation>
    <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
@@ -140,7 +140,7 @@
         <UML:AssociationEnd type="uOVgcJmrOr1dK" isNavigable="true" visibility="public" xmi.id="uBf9qGWlWXrTT" changeability="changeable" isSpecification="false" name="" aggregation="none"/>
        </UML:Association.connection>
       </UML:Association>
-      <UML:Class namespace="Logical_View" visibility="public" xmi.id="usssAVQrhPTH1" isLeaf="false" isSpecification="false" isRoot="false" name="politics.c" isAbstract="false">
+      <UML:Class namespace="Logical_View" visibility="public" xmi.id="usssAVQrhPTH1" isLeaf="false" isSpecification="false" isRoot="false" name="algorithms.c" isAbstract="false">
        <UML:Classifier.feature>
         <UML:Operation isQuery="false" visibility="public" xmi.id="uwvP9pIYmT871" isLeaf="false" isSpecification="false" isOverride="false" isRoot="false" name="OPT" isVirtual="false" isAbstract="false" isInline="false">
          <UML:BehavioralFeature.parameter>
@@ -333,6 +333,10 @@
      <listitem type="819" id="uVoXvzqs54qyw" label="diagrama do componente" open="0"/>
     </listitem>
     <listitem type="801" id="Logical_View" open="1">
+     <listitem type="813" id="usssAVQrhPTH1" open="1">
+      <listitem type="815" id="ugCIg79H3PHCD" open="0"/>
+      <listitem type="815" id="uwvP9pIYmT871" open="0"/>
+     </listitem>
      <listitem type="813" id="uLK81igDf0Ymz" open="1">
       <listitem type="815" id="us59bkhVIUGHE" open="0"/>
       <listitem type="815" id="uaCSwnAT1sKjG" open="0"/>
@@ -357,10 +361,6 @@
       <listitem type="815" id="u1CvvDFqzbiZd" open="0"/>
       <listitem type="814" id="uowvnmiLpcKxk" open="0"/>
       <listitem type="815" id="u2mDHLQRzz8lh" open="0"/>
-     </listitem>
-     <listitem type="813" id="usssAVQrhPTH1" open="1">
-      <listitem type="815" id="ugCIg79H3PHCD" open="0"/>
-      <listitem type="815" id="uwvP9pIYmT871" open="0"/>
      </listitem>
      <listitem type="813" id="ueI6k3hZXOZGR" open="1"/>
      <listitem type="830" id="Datatypes" open="0">
