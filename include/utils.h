@@ -3,5 +3,6 @@
 
 #define ERROR_INPUT_MESSAGE "Error opening input file"
 #define ERROR_OUTPUT_MESSAGE "Error opening output file"
+#define DELIMITER ','
 
 #endif

@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include "utils.h"
 
-void core_run(FILE *input, FILE *output){}
+extern void readLine(FILE *input, long int position);
 
+void core_run(FILE *input, FILE *output){
+	long int position = 0;
+	readLine(input, position);
+}
+/*
 int[] load(){}
-
+*/
 void execute(){}
 
 void flush(){}
