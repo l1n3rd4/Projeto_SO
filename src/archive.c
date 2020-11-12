@@ -21,12 +21,22 @@ int *readLine(FILE *input, long int position){
 	int *pages = (int*) calloc(array_size, sizeof(*pages));
 	token = strtok(line, DELIMITER);
 
-	
+
 	while(token != NULL){
 		pages[counter] = atoi(token);
 		token = strtok(NULL, DELIMITER);
 		counter++;
 	}
-	
+
 	return pages;
+}
+
+void saveHistoric(int **historic, FILE *output, int column, int line){
+	fprintf(output, "EVOLUCAO");
+
+	for(int i = 0; i < line; i++){
+		for(int j = 0; j < column; j++){
+			fprintf(output, "%d", historic[i][j]);
+		}
+	}
 }
