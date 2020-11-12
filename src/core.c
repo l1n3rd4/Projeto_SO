@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "utils.h"
 
 extern int* readLine(FILE *input, long int position);
@@ -17,6 +18,29 @@ static void load(FILE *input){
 }
 
 
-static void execute(){}
+static void execute(){
+	int option = 0;
+
+	printf("Choose from the options below: \n");
+	printf("0 - Sair");
+	printf("1 - OPT");
+	printf("2 - FIFO");
+	scanf("%d", &option);
+
+	switch (option) {
+		case 0:
+			exit(EXIT_SUCCESS);
+		case 1:
+			OPT();
+			break;
+		case 2:
+			FIFO();
+			break;
+		default: 
+			printf("Invalid option! \n");
+			exit(EXIT_FAILURE);
+	}
+
+}
 
 static void flush(){}
