@@ -1,15 +1,22 @@
 #include <stdio.h>
 #include "utils.h"
 
-extern void readLine(FILE *input, long int position);
+extern int* readLine(FILE *input, long int position);
+static int *pages;
 
-void core_run(FILE *input, FILE *output){
-	long int position = 0;
-	readLine(input, position);
+void core_run(FILE *input, FILE *output){		
+	load(input);
+	execute();
+	flush();
 }
-/*
-int[] load(){}
-*/
-void execute(){}
 
-void flush(){}
+
+static void load(FILE *input){
+	long int position = 0;
+        pages = readLine(input, position);
+}
+
+
+static void execute(){}
+
+static void flush(){}

@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
 
 	fclose(input);
 	fclose(output);
-	
+
 	return(EXIT_SUCCESS);
 
 error_input_file:
