@@ -40,3 +40,10 @@ void saveHistoric(int **historic, FILE *output, int column, int line){
 		}
 	}
 }
+
+void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate){
+	fprintf(output, "ACERTOS \n%d", hits);
+	fprintf(output, "ERROS \n%d" , misses);
+	fprintf(output, "TOTAL REQUISICOES \n%d", totalRequisitions);
+	fprintf(output, "TAXA DE ERRO \n%f", errorRate);
+}
