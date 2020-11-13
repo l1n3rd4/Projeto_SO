@@ -1,5 +1,9 @@
 #ifndef TEST_H
 #define TEST_H
 
-#define S "LEONARDO"
+struct test{
+	void (*test_function)(void);
+	const char *name;
+};
+
 #endif

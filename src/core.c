@@ -4,13 +4,13 @@
 
 extern int* readLine(FILE *input, long int position);
 extern void saveHistoric(int **historic, FILE *output, int line, int column);
+extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
 
 void core_run(FILE *input, FILE *output){
 	load(input);
 	execute();
 	flush(output);
 }
-
 
 static void load(FILE *input){
 	long int position = 0;
@@ -23,7 +23,7 @@ static void execute(){
 	printf("\n\n");
 	printf("\t\t\t ________________________________ \n");
 	printf("\t\t\t|Choose from the options below:  |\n");
-	printf("\t\t\t|0 - Sair -----------------------|\n");
+	printf("\t\t\t|0 - Exit -----------------------|\n");
 	printf("\t\t\t|1 - OPT ------------------------|\n");
 	printf("\t\t\t|2 - FIFO -----------------------|\n");
 	printf("\t\t\t -------------------------------- \n");

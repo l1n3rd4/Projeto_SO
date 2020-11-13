@@ -36,8 +36,10 @@ void saveHistoric(int **historic, FILE *output, int column, int line){
 
 	for(int i = 0; i < line; i++){
 		for(int j = 0; j < column; j++){
-			fprintf(output, "%d", historic[i][j]);
+			fprintf(output, "%d ", historic[i][j]);
 		}
+
+		fprintf(output, "\n");
 	}
 }
 

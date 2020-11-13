@@ -12,6 +12,6 @@ static int *pages;
 /*Functions Declarations*/
 static void load(FILE *input);
 static void execute();
-static void flush();
+static void flush(FILE *output);
 
 #endif
