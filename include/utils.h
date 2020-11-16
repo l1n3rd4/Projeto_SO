@@ -7,7 +7,8 @@
 #define ERROR_OUTPUT_MESSAGE "Error opening output file"
 
 /*Functions Declarations*/
-static void load(FILE *input);
+static int** load(FILE *input);
+static int menu();
 static void execute();
 static void flush(FILE *output);
 

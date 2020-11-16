@@ -6,15 +6,27 @@ extern int* readLine(FILE *input, long int position);
 extern void saveHistoric(int **historic, FILE *output, int line, int column);
 extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
 
+int *pages;
+
 void core_run(FILE *input, FILE *output){
+	int option = 0;
+	int **historic;
+
 	load(input);
-	execute();
+	option = menu();
+
+	execute(option);
 	flush(output);
+
+	free(pages);
 }
 
-static void load(FILE *input){
+static int** load(FILE *input){
 	long int position = 0;
-//        pages = readLine(input, position);
+	pages = readLine(input, position);
+	int **historic;
+
+	return (historic);
 }
 
 static int menu(){
@@ -34,9 +46,7 @@ static int menu(){
 	return (option);
 }
 
-static void execute(){
-
-
+static void execute(int option){
 	switch (option) {
 		case 0:
 			exit(EXIT_SUCCESS);
