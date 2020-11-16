@@ -14,10 +14,10 @@ void core_run(FILE *input, FILE *output){
 
 static void load(FILE *input){
 	long int position = 0;
-        pages = readLine(input, position);
+//        pages = readLine(input, position);
 }
 
-static void execute(){
+static int menu(){
 	int option = 0;
 
 	printf("\n\n");
@@ -30,6 +30,12 @@ static void execute(){
 
 	printf("Answer: ");
 	scanf("%d", &option);
+
+	return (option);
+}
+
+static void execute(){
+
 
 	switch (option) {
 		case 0:
@@ -47,4 +53,7 @@ static void execute(){
 
 }
 
-static void flush(FILE *output){}
+static void flush(FILE *output){
+//      saveHistoric(output);
+//	saveFinalReport(output);
+}

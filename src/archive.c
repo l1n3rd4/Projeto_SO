@@ -16,19 +16,18 @@ int *readLine(FILE *input, long int position){
 
 	array_size = getline(&line, &initial_size, input);
 
-
 	line[array_size - 1] = '\0';
-	int *pages = (int*) calloc(array_size, sizeof(*pages));
+	int *sequence = (int*) calloc(array_size, sizeof(*sequence));
 	token = strtok(line, DELIMITER);
 
 
 	while(token != NULL){
-		pages[counter] = atoi(token);
+		sequence[counter] = atoi(token);
 		token = strtok(NULL, DELIMITER);
 		counter++;
 	}
 
-	return pages;
+	return sequence;
 }
 
 void saveHistoric(int **historic, FILE *output, int column, int line){
