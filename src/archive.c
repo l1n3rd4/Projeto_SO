@@ -30,7 +30,7 @@ int *readLine(FILE *input, long int position){
 	return sequence;
 }
 
-int getArraySize(){
+int getArraySize(void){
 	return array_size;
 }
 

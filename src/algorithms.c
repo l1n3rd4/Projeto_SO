@@ -1,5 +1,7 @@
 
-//teste
+extern int getColumnSize(void);
+
+
 int** OPT(int *pages, int **historic){
 
   return (historic);

@@ -6,12 +6,13 @@ extern int* readLine(FILE *input, long int position);
 extern void saveHistoric(int **historic, FILE *output, int line, int column);
 extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
 
-extern int getArraySize();
+extern int getArraySize(void);
 extern int** OPT(int *pages, int **historic);
 extern int** FIFO(int *pages, int **historic);
 
 int *pages;
 int line_size;
+int column_size;
 
 void core_run(FILE *input, FILE *output){
 	int option = 0;
@@ -30,9 +31,12 @@ void core_run(FILE *input, FILE *output){
 	free(historic);
 }
 
+int getColumnSize(void){
+	return (column_size);
+}
+
 static int** load(FILE *input){
 	long int position = 0;
-	int column_size;
 	int **historic;
 	int *memory_size = NULL;
 
@@ -40,10 +44,8 @@ static int** load(FILE *input){
 	position = ftell(input);
 	memory_size = readLine(input, position);
 	line_size = memory_size[0];
-	printf("line %d\n", line_size);
 
 	column_size = getArraySize();
-
 	historic = (int**) calloc(line_size, sizeof(**historic));
 
 	for(int i = 0; i < column_size - 1; i++)
@@ -52,7 +54,7 @@ static int** load(FILE *input){
 	return (historic);
 }
 
-static int menu(){
+static int menu(void){
 	int option = 0;
 
 	printf("\n\n");

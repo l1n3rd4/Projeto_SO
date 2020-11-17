@@ -8,8 +8,8 @@
 
 /*Functions Declarations*/
 static int** load(FILE *input);
-static int menu();
-static void execute();
+static int menu(void);
+static void execute(int option, int **historic);
 static void flush(FILE *output);
 
 #endif
