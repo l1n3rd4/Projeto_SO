@@ -23,7 +23,7 @@ void core_run(FILE *input, FILE *output){
 	printf("%d\n", pages[1]);
 
 	execute(option, historic);
-	flush(output);
+	flush(output, historic);
 
 	for(int i = 0; i < line_size - 1; i++)
 		free(historic[i]);
@@ -88,7 +88,7 @@ static void execute(int option, int **historic){
 
 }
 
-static void flush(FILE *output){
-//      saveHistoric(output);
+static void flush(FILE *output, int** historic){
+	saveHistoric(historic, output, column_size, line_size);
 //	saveFinalReport(output);
 }

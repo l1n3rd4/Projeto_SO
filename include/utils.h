@@ -10,6 +10,14 @@
 static int** load(FILE *input);
 static int menu(void);
 static void execute(int option, int **historic);
-static void flush(FILE *output);
+static void flush(FILE *output, int** historic);
 
 #endif
+
+
+// Perguntas
+// static ?
+// variáveis globais
+// Porque alterando a delcaração do UTILS_H não da erro  ?
+// exit ?
+// erros main 
