@@ -5,12 +5,12 @@
 #include "utils.h"
 
 const char *DELIMITER = ",";
+ssize_t array_size;
 
 int *readLine(FILE *input, long int position){
 	char *line = NULL;
 	char *token = NULL;
 	size_t initial_size = 0;
-	ssize_t array_size;
 	int counter = 0;
 	fseek(input, position, SEEK_SET);
 
@@ -28,6 +28,10 @@ int *readLine(FILE *input, long int position){
 	}
 
 	return sequence;
+}
+
+int getArraySize(){
+	return array_size;
 }
 
 void saveHistoric(int **historic, FILE *output, int column, int line){
