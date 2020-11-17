@@ -5,8 +5,12 @@
 extern int* readLine(FILE *input, long int position);
 extern void saveHistoric(int **historic, FILE *output, int line, int column);
 extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
+
 extern int getArraySize();
-const int *pages;
+extern int** OPT(int *pages, int **historic);
+extern int** FIFO(int *pages, int **historic);
+
+int *pages;
 int line_size;
 
 void core_run(FILE *input, FILE *output){
@@ -17,7 +21,7 @@ void core_run(FILE *input, FILE *output){
 	option = menu();
 	printf("%d\n", pages[1]);
 
-	execute(option);
+	execute(option, historic);
 	flush(output);
 
 	for(int i = 0; i < line_size - 1; i++)
@@ -65,15 +69,15 @@ static int menu(){
 	return (option);
 }
 
-static void execute(int option){
+static void execute(int option, int **historic){
 	switch (option) {
 		case 0:
 			exit(EXIT_SUCCESS);
 		case 1:
-//			OPT();
+			historic = OPT(pages, historic);
 			break;
 		case 2:
-//			FIFO();
+			historic = FIFO(pages, historic);
 			break;
 		default:
 			printf("Invalid option! \n");

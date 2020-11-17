@@ -1,5 +1,11 @@
 
 //teste
-void OPT(int *pages){}
+int** OPT(int *pages, int **historic){
 
-void FIFO(int *pages){}
+  return (historic);
+}
+
+int** FIFO(int *pages, int **historic){
+
+  return (historic);
+}
