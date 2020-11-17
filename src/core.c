@@ -7,23 +7,28 @@ extern void saveHistoric(int **historic, FILE *output, int line, int column);
 extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
 extern int getArraySize();
 const int *pages;
+int line_size;
 
 void core_run(FILE *input, FILE *output){
 	int option = 0;
 	int **historic;
 
-	load(input);
+	historic = load(input);
 	option = menu();
 	printf("%d\n", pages[1]);
 
 	execute(option);
 	flush(output);
+
+	for(int i = 0; i < line_size - 1; i++)
+		free(historic[i]);
+
+	free(historic);
 }
 
 static int** load(FILE *input){
 	long int position = 0;
 	int column_size;
-	int line_size;
 	int **historic;
 	int *memory_size = NULL;
 
@@ -31,6 +36,8 @@ static int** load(FILE *input){
 	position = ftell(input);
 	memory_size = readLine(input, position);
 	line_size = memory_size[0];
+	printf("line %d\n", line_size);
+
 	column_size = getArraySize();
 
 	historic = (int**) calloc(line_size, sizeof(**historic));
