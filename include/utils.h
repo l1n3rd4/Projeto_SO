@@ -7,17 +7,20 @@
 #define ERROR_OUTPUT_MESSAGE "Error opening output file"
 
 /*Functions Declarations*/
-static int** load(FILE *input);
-static int menu(void);
-static void execute(int option, int** historic);
-static void flush(FILE *output, int** historic);
+extern int getLineSize(void);
+extern int** OPT(int *pages, int **historic);
+extern int** FIFO(int *pages, int **historic);
+extern int* readLine(FILE *input, long int position);
+extern void saveHistoric(int **historic, FILE *output, int line, int column);
+extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
+extern void core_run(FILE *input, FILE *output);
+extern int getLineSize(void);
+extern int getColumnSize(void);
 
 #endif
 
 
 // Perguntas
-// static ?
 // variáveis globais
-// Porque alterando a delcaração do UTILS_H não da erro  ?
 // exit ?
 // erros main

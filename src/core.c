@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include "utils.h"
 
-extern int* readLine(FILE *input, long int position);
-extern void saveHistoric(int **historic, FILE *output, int line, int column);
-extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
+// libncurses
 
-extern int getLineSize(void);
-extern int** OPT(int *pages, int **historic);
-extern int** FIFO(int *pages, int **historic);
+static int** load(FILE *input);
+static int menu(void);
+static void execute(int option, int** historic);
+static void flush(FILE *output, int** historic);
 
 int *pages;
 int line_size;

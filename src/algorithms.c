@@ -1,6 +1,4 @@
-
-extern int getColumnSize(void);
-extern int getLineSize(void);
+#include "utils.h"
 
 int** OPT(int *pages, int **historic){
 
@@ -8,7 +6,7 @@ int** OPT(int *pages, int **historic){
 }
 // ele está lá ?
 //Se não, há espaços em brancos ?
-//se não, Qual é o ? 
+//se não, Qual é o ?
 
 int** FIFO(int *pages, int **historic){
 

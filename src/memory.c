@@ -1,5 +1,4 @@
-extern int getLineSize(void);
-extern int getColumnSize(void);
+#include "utils.h";
 
 int isThere(int columnNumber, int **historic, int item){
     for(int i = 0; i < getLineSize() - 1; i++){
@@ -17,4 +16,8 @@ int areThereEmptySpaces(int columnNumber, int **historic, int item){
   }
 
   return (-1);
+}
+
+int theFirstInclude(){
+  return 0;
 }
