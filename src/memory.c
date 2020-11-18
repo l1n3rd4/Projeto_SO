@@ -18,6 +18,18 @@ int areThereEmptySpaces(int columnNumber, int **historic, int item){
   return (-1);
 }
 
-int theFirstInclude(){
-  return 0;
+int indexFirstIncludedPage(page *pages){
+  int lineDesired = 0;
+  int first = 0;
+
+  for(int i = 0; i < getLineSize() - 1; i++){
+      if(i == 0){
+        first = pages[i].firstInclude;
+      } else if (first < pages[i].firstInclude){
+        first = pages[i].firstInclude;
+        lineDesired = i;
+      }
+    }
+
+    return lineDesired;
 }

@@ -9,7 +9,7 @@ static int menu(void);
 static void execute(int option, int** historic);
 static void flush(FILE *output, int** historic);
 
-int *pages;
+page *pages;
 int line_size;
 int column_size;
 
