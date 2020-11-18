@@ -1,4 +1,4 @@
-#include "utils.h";
+#include "utils.h"
 
 int isThere(int columnNumber, int **historic, int item){
     for(int i = 0; i < getLineSize() - 1; i++){

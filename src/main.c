@@ -25,9 +25,9 @@ int main(int argc, char *argv[]){
 error_output_file:
 	printf("%s\n", ERROR_OUTPUT_MESSAGE);
 	fclose(input);
+	return (EXIT_FAILURE);
 
 error_input_file:
 	printf("%s\n", ERROR_INPUT_MESSAGE);
-// criar variavel error_message
 	return (EXIT_FAILURE);
 }
