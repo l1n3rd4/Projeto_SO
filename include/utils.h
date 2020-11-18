@@ -9,6 +9,7 @@
 typedef struct PAGE{
   int numberPage;
   int firstInclude;
+  int timeWaitingRequisition;
 }page;
 
 /*Functions Declarations*/

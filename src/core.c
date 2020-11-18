@@ -37,8 +37,14 @@ static int** load(FILE *input){
 	long int position = 0;
 	int **historic;
 	int *memory_size = NULL;
+	int *IntPages;
 
-	pages = readLine(input, position);
+	IntPages = readLine(input, position);
+
+	for(int i = 0; i < getColumnSize() - 1; i++){
+		pages[i].numberPage = IntPages[i];
+	}
+
 	position = ftell(input);
 	memory_size = readLine(input, position);
 	line_size = memory_size[0];

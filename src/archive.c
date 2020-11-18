@@ -6,7 +6,7 @@
 
 const char *DELIMITER = ",";
 ssize_t array_size;
-//colocar caractere de nova linha 
+//colocar caractere de nova linha
 
 int *readLine(FILE *input, long int position){
 	char *line = NULL;
