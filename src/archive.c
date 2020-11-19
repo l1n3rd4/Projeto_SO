@@ -35,11 +35,11 @@ int getLineSize(void){
 	return array_size;
 }
 
-void saveHistoric(int **historic, FILE *output, int column, int line){
+void saveHistoric(int **historic, FILE *output){
 	fprintf(output, "EVOLUCAO");
 
-	for(int i = 0; i < line; i++){
-		for(int j = 0; j < column; j++){
+	for(int i = 0; i < getLineSize() - 1; i++){
+		for(int j = 0; j < getColumnSize() - 1; j++){
 			fprintf(output, "%d ", historic[i][j]);
 		}
 

@@ -17,7 +17,7 @@ extern int getLineSize(void);
 extern int** OPT(page *pages, int **historic);
 extern int** FIFO(page *pages, int **historic);
 extern int* readLine(FILE *input, long int position);
-extern void saveHistoric(int **historic, FILE *output, int line, int column);
+extern void saveHistoric(int **historic, FILE *output);
 extern void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate);
 extern void core_run(FILE *input, FILE *output);
 extern int getLineSize(void);

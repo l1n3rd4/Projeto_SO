@@ -1,6 +1,7 @@
 #include "utils.h"
 
 int isThere(int columnNumber, int **historic, int item){
+  printf("teste\n");
     for(int i = 0; i < getLineSize() - 1; i++){
       if(historic[i][columnNumber] == item)
         return (i);
@@ -35,11 +36,12 @@ int indexFirstIncludedPage(page *pages){
 }
 
 int** copyLines(int** historic, int column){
+  printf("testecopylines\n");
   if(column == 0){
     return (historic);
   }
 
-  for(int i = 0; i < getLineSize(); i++){
+  for(int i = 0; i < getLineSize() - 1; i++){
     historic[i][column] = historic[i][column - 1];
   }
 

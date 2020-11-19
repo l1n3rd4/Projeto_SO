@@ -18,6 +18,7 @@ void core_run(FILE *input, FILE *output){
 	int **historic;
 
 	historic = load(input);
+
 	option = menu();
 
 	execute(option, historic);
@@ -92,6 +93,6 @@ static void execute(int option, int **historic){
 }
 
 static void flush(FILE *output, int** historic){
-	saveHistoric(historic, output, column_size, line_size);
+	saveHistoric(historic, output);
 //	saveFinalReport(output);
 }
