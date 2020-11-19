@@ -33,3 +33,15 @@ int indexFirstIncludedPage(page *pages){
 
     return lineDesired;
 }
+
+int** copyLines(int** historic, int column){
+  if(column == 0){
+    return (historic);
+  }
+
+  for(int i = 0; i < getLineSize(); i++){
+    historic[i][column] = historic[i][column - 1];
+  }
+
+  return (historic);
+}

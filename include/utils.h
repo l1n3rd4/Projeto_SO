@@ -25,5 +25,6 @@ extern int getColumnSize(void);
 extern int isThere(int columnNumber, int **historic, int item);
 extern int areThereEmptySpaces(int columnNumber, int **historic, int item);
 extern int indexFirstIncludedPage(page *pages);
+extern int** copyLines(int** historic, int column);
 
 #endif
