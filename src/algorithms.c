@@ -5,7 +5,7 @@ int** OPT(page *pages, int **historic){
   int hits = 0;
   int misses = 0;
   int lineDesired;
-  
+
   for(int j = 0;j < getColumnSize(); j++){
     if(isThere(j, historic, pages[j].numberPage) != -1){
       hits++;
@@ -18,9 +18,6 @@ int** OPT(page *pages, int **historic){
   }
   return (historic);
 }
-// ele está lá ?
-//Se não, há espaços em brancos ?
-//se não, Qual é o ?
 
 int** FIFO(page *pages, int **historic){
   int address = 0;
@@ -44,7 +41,3 @@ int** FIFO(page *pages, int **historic){
 
   return (historic);
 }
-
-// ele está lá ?
-//Se não, há espaços em brancos ?
-//se não, Qual é o primeiro elemento inserido ?

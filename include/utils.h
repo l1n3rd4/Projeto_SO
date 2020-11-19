@@ -27,9 +27,3 @@ extern int areThereEmptySpaces(int columnNumber, int **historic, int item);
 extern int indexFirstIncludedPage(page *pages);
 
 #endif
-
-
-// Perguntas
-// variáveis globais
-// exit ?
-// erros main
