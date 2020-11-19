@@ -27,8 +27,10 @@ int** FIFO(page *pages, int **historic){
   int lineDesired;
 
   for(int j = 0; j < getColumnSize(); j++){
-    printf("testefifo\n");
-    historic = copyLines(historic, j);
+
+    if(j != 0){
+      historic = copyLines(historic, j);
+    }
 
     if(isThere(j, historic, pages[j].numberPage) != -1){
       hits++;

@@ -26,5 +26,8 @@ extern int isThere(int columnNumber, int **historic, int item);
 extern int areThereEmptySpaces(int columnNumber, int **historic, int item);
 extern int indexFirstIncludedPage(page *pages);
 extern int** copyLines(int** historic, int column);
+extern int** initHistoric(int** historic);
+extern void exibe(int** historic);
+extern int readSizeMemory(FILE *input, long int position);
 
 #endif
