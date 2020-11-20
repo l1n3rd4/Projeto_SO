@@ -17,8 +17,8 @@ int main(int argc, char *argv[]){
 
 	core_run(input, output);
 	printf("teste main\n");
-	fclose(input);
-	fclose(output);
+	// fclose(input);
+	// fclose(output);
 
 	return(EXIT_SUCCESS);
 

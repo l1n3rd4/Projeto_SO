@@ -46,11 +46,11 @@ int readSizeMemory(FILE *input, long int position){
 }
 
 void saveHistoric(page **historic, FILE *output){
-	fprintf(output, "EVOLUCAO");
+	fprintf(output, "EVOLUCAO\n");
 
 	for(int i = 0; i < getLineSize(); i++){
 		for(int j = 0; j < getColumnSize(); j++){
-			fprintf(output, "%d ", historic[i][j].numberPage);
+			fprintf(output, "%d ", (*(historic + i) + j)->numberPage);
 		}
 
 		fprintf(output, "\n");
@@ -58,8 +58,8 @@ void saveHistoric(page **historic, FILE *output){
 }
 
 void saveFinalReport(FILE *output){
-	fprintf(output, "ACERTOS \n%d", getHits());
-	fprintf(output, "ERROS \n%d" , getMisses());
-	fprintf(output, "TOTAL REQUISICOES \n%d", getColumnSize());
-	fprintf(output, "TAXA DE ERRO \n%f", getErrorRate());
+	fprintf(output, "ACERTOS \n%d\n", getHits());
+	fprintf(output, "ERROS \n%d\n" , getMisses());
+	fprintf(output, "TOTAL REQUISICOES \n%d\n", getColumnSize());
+	fprintf(output, "TAXA DE ERRO \n%.2f\n", getErrorRate());
 }

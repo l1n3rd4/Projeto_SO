@@ -9,10 +9,10 @@ static int menu(void);
 static void execute(int option, page **historic);
 static void flush(FILE *output, page **historic);
 
-page *pages;
+page *pages = NULL;
 int line_size;
 int column_size;
-page **historic;
+page **historic = NULL;
 
 void core_run(FILE *input, FILE *output){
 	line_size = 0;
@@ -20,17 +20,18 @@ void core_run(FILE *input, FILE *output){
 	int option = 0;
 
 	load(input);
-	initHistoric(historic);
+	historic = initHistoric(historic);
+	printPages(historic);
 
 	option = menu();
 
 	execute(option, historic);
 	flush(output, historic);
 
-	for(int i = 0; i < line_size; i++)
-		free(historic[i]);
-
-	free(historic);
+	// for(int i = 0; i < line_size; i++)
+	// 	free(historic + i);
+	// //
+	// free(historic);
 }
 
 int getLineSize(void){
@@ -53,7 +54,7 @@ static void load(FILE *input){
 	column_size = getColumnSize();
 
 	for(int i = 0; i < getColumnSize(); i++){
-		pages[i].numberPage = IntPages[i];
+		(pages + i) -> numberPage = IntPages[i];
 	}
 
 	free(IntPages);
