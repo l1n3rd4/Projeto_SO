@@ -2,8 +2,9 @@
 #include "utils.h"
 
 int isThere(int columnNumber, int **historic, int item){
-  printf("teste\n");
-    for(int i = 0; i < getLineSize() - 1; i++){
+    for(int i = 0; i < getLineSize(); i++){
+      printf("columnNumber %d\n", columnNumber);
+      printf("%d\n", historic);
       if(historic[i][columnNumber] == item)
         return (i);
     }
@@ -12,7 +13,7 @@ int isThere(int columnNumber, int **historic, int item){
 }
 
 int areThereEmptySpaces(int columnNumber, int **historic, int item){
-  for(int i = 0; i < getLineSize() - 1; i++){
+  for(int i = 0; i < getLineSize(); i++){
     if(historic[i][columnNumber] == 0)
       return (i);
   }
@@ -24,7 +25,7 @@ int indexFirstIncludedPage(page *pages){
   int lineDesired = 0;
   int first = 0;
 
-  for(int i = 0; i < getLineSize() - 1; i++){
+  for(int i = 0; i < getLineSize(); i++){
       if(i == 0){
         first = pages[i].firstInclude;
       } else if (first < pages[i].firstInclude){
@@ -37,18 +38,15 @@ int indexFirstIncludedPage(page *pages){
 }
 
 int** copyLines(int** historic, int column){
-  for(int i = 0; i < getLineSize() - 1; i++){
+  for(int i = 0; i < getLineSize(); i++){
     historic[i][column] = historic[i][column - 1];
   }
 
-  printf("testecopylines\n");
   return (historic);
 }
 
 int** initHistoric(int** historic){
-
-	historic = (int **) malloc(getLineSize() * sizeof(int*));
-  printf("initHistoric \n");
+	historic = (int **) calloc(getLineSize(), sizeof(int*));
 
 	if (historic == NULL){
 		printf("** Erro: Memoria Insuficiente **");
@@ -56,7 +54,7 @@ int** initHistoric(int** historic){
 	}
 
 	for (int i = 0; i < getColumnSize(); i++ ){
-		historic[i] = (int*) malloc(getColumnSize() * sizeof(int));
+		historic[i] = (int*) calloc(getColumnSize(), sizeof(int));
 
 		if (historic[i] == NULL){
 			printf("** Erro: Memoria Insuficiente **");
@@ -64,21 +62,19 @@ int** initHistoric(int** historic){
 		}
 	}
 
-	printf("Alocado\n");
-
-  for(int i = 0; i < getLineSize() - 1; i++){
-    for(int j = 0; j < getColumnSize() - 1; j++){
-      historic[i][j] = 0;
-    }
-  }
-
   return (historic);
 }
 
-void exibe(int** historic){
-  for(int i = 0; i < getLineSize() - 1; i++){
-    for(int j = 0; j < getColumnSize() - 1; j++){
-      printf("%d\n", historic[i][j] = 0);
+void exibe(int **historic){
+  printf("exibe line %d\n", getLineSize());
+  printf("exibe coluna %d\n", getColumnSize());
+
+  for(int i = 0; i < getLineSize(); i++){
+    for(int j = 0; j < getColumnSize(); j++){
+       printf("%d ", historic[i][j]);
     }
+
+    //*(*(historic + i) + j)
+    printf("\n");
   }
 }

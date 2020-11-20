@@ -13,14 +13,10 @@ int *readLine(FILE *input, long int position){
 	char *token = NULL;
 	size_t initial_size = 0;
 	int counter = 0;
-	ssize_t bufferSize = 0;
 	int *sequence;
 	fseek(input, position, SEEK_SET);
 
-	bufferSize = getline(&line, &initial_size, input);
-	printf("buffer antes do getline %d\n", bufferSize);
-	printf("Tamanho %d\n", array_size);
-
+	array_size = getline(&line, &initial_size, input);
 	line[array_size - 1] = '\0';
 
 	sequence = calloc(array_size, sizeof(*sequence));
@@ -28,23 +24,15 @@ int *readLine(FILE *input, long int position){
 
 	while(token != NULL){
 		sequence[counter] = atoi(token);
-		printf("readLine: %d\n", sequence[counter]);
 		token = strtok(NULL, DELIMITER);
 		counter++;
 	}
 
-	if(position == 0){
-		array_size = bufferSize;
-		array_size = array_size / 2;
-	}
-
-	printf("buffer %d\n", bufferSize);
-	printf("array_size %d\n", array_size);
-	printf("gugu %d\n", sequence[0]);
+	array_size = array_size / 2;
 	return sequence;
 }
 
-int getLineSize(void){
+int getColumnSize(void){
 	return array_size;
 }
 
@@ -61,9 +49,9 @@ int readSizeMemory(FILE *input, long int position){
 void saveHistoric(int **historic, FILE *output){
 	fprintf(output, "EVOLUCAO");
 
-	for(int i = 0; i < getLineSize() - 1; i++){
-		for(int j = 0; j < getColumnSize() - 1; j++){
-			fprintf(output, "%d ", historic[i][j]);
+	for(int i = 0; i < getLineSize(); i++){
+		for(int j = 0; j < getColumnSize(); j++){
+			fprintf(output, "%d ", historic);
 		}
 
 		fprintf(output, "\n");

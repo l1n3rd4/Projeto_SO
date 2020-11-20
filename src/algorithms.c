@@ -26,7 +26,7 @@ int** FIFO(page *pages, int **historic){
   int address = 0;
   int lineDesired;
 
-  for(int j = 0; j < getColumnSize(); j++){
+  for(int j = 1; j < getColumnSize(); j++){
 
     if(j != 0){
       historic = copyLines(historic, j);
@@ -35,17 +35,17 @@ int** FIFO(page *pages, int **historic){
     if(isThere(j, historic, pages[j].numberPage) != -1){
       hits++;
     } else if (address = areThereEmptySpaces(j, historic, pages[j].numberPage) != -1){
-      printf("a\n");
-      historic[address][j] = pages[j].numberPage;
-      pages[j].firstInclude = j;
-      misses++;
+      // historic[address][j] = pages[j].numberPage;
+      // pages[j].firstInclude = j;
+      // misses++;
     } else {
       misses++;
-      lineDesired = indexFirstIncludedPage(pages);
-      historic[lineDesired][j] = pages[j].numberPage;
-      pages[j].firstInclude = j;
+      // lineDesired = indexFirstIncludedPage(pages);
+      // historic[lineDesired][j] = pages[j].numberPage;
+      // pages[j].firstInclude = j;
     }
   }
 
+  printf("aa4\n");
   return (historic);
 }

@@ -15,29 +15,27 @@ int column_size;
 int **historic;
 
 void core_run(FILE *input, FILE *output){
+	line_size = 0;
+	column_size = 0;
 	int option = 0;
+
 	load(input);
 	initHistoric(historic);
-	
-	printf("Tamanho core : %d\n", getLineSize());
 	exibe(historic);
 
-	for(int i = 0; i < getLineSize() - 1; i++){
-		printf("%d \n", pages[i].numberPage);
-	}
 	option = menu();
 
 	execute(option, historic);
 	flush(output, historic);
 
-	for(int i = 0; i < line_size - 1; i++)
-		free(historic[i]);
+	// for(int i = 0; i < line_size; i++)
+	// 	free(historic);
 
-	free(historic);
+	// free(historic);
 }
 
-int getColumnSize(void){
-	return (column_size);
+int getLineSize(void){
+	return (line_size);
 }
 
 static void load(FILE *input){
@@ -48,24 +46,19 @@ static void load(FILE *input){
 
 	pages = calloc(getLineSize(), sizeof(*pages));
 	IntPages = readLine(input, position);
-
-	for(int i = 0; i < getColumnSize() - 1; i++){
-		pages[i].numberPage = IntPages[i];
-		printf("int: %d \n", IntPages[i]);
-		printf("%d \n", pages[i].numberPage);
-	}
+	printf("pointer %d\n", IntPages[1]);
 
 	position = ftell(input);
-
-	printf("hello \n");
 	memory_size = readSizeMemory(input, position);
 
 	line_size = memory_size;
+	column_size = getColumnSize();
 
-	column_size = getLineSize();
+	for(int i = 0; i < getColumnSize(); i++){
+		pages[i].numberPage = IntPages[i];
+	}
 
-	printf("line size %d\n", line_size);
-	printf("colum size %d\n", column_size);
+	free(IntPages);
 }
 
 static int menu(void){

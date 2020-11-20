@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 		goto error_output_file;
 
 	core_run(input, output);
-
+	printf("teste main\n");
 	fclose(input);
 	fclose(output);
 
