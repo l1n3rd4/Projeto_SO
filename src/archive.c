@@ -50,7 +50,11 @@ void saveHistoric(page **historic, FILE *output){
 
 	for(int i = 0; i < getLineSize(); i++){
 		for(int j = 0; j < getColumnSize(); j++){
-			fprintf(output, "%d ", (*(historic + i) + j)->numberPage);
+			if(i < getLineSize() && (*(historic + i) + j)->numberPage == 0){
+				fprintf(output, "  ");
+			} else {
+				fprintf(output, "%d ", (*(historic + i) + j)->numberPage);
+			}
 		}
 
 		fprintf(output, "\n");
