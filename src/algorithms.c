@@ -8,22 +8,26 @@ page** OPT(page *pages, page **historic){
   int address = 0;
   int lineDesired;
 
-  for(int j = 0;j < getColumnSize(); j++){
+  for(int j = 0; j < getColumnSize(); j++){
     if(isThere(j, historic, pages[j].numberPage) != -1){
       hits++;
     } else if (areThereEmptySpaces(j, historic) != -1){
       address = areThereEmptySpaces(j, historic);
       (*(historic + address) + j)->numberPage = pages[j].numberPage;
       (*(historic + address) + j)->firstInclude = j;
+      printf("Page %d\n", (*(historic + address) + j)->numberPage);
+      printf("teste first %d\n", (*(historic + address) + j)->firstInclude);
       misses++;
-    } else {
+    }else {
       misses++;
-      lineDesired = theLastPageRequisition(historic, pages, j);
+      lineDesired = indexFirstIncludedPage(historic, j);
       (*(historic + lineDesired) + j)->numberPage = pages[j].numberPage;
       (*(historic + lineDesired) + j)->firstInclude = j;
     }
-  }
 
+    printf("pre HIst\n");
+    historic = copyLines(historic, (j + 1));
+  }
 
   return (historic);
 }
@@ -49,6 +53,7 @@ page** FIFO(page *pages, page **historic){
       (*(historic + lineDesired) + j)->firstInclude = j;
     }
 
+    printf("pre HIst\n");
     historic = copyLines(historic, (j + 1));
   }
 

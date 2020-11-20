@@ -7,7 +7,6 @@ int isThere(int column, page **historic, int item){
         return (i);
     }
 
-    printf("a\n");
     return (NOT_FOUND_CODE);
 }
 
@@ -89,16 +88,16 @@ int theLastPageRequisition(page **historic, page *pages, int column){
   int lineDesired = 0;
 
   for(int i = 0; i < getLineSize(); i++){
-    while(pages[count].numberPage != historic[i][column].numberPage){
+    while(pages[count].numberPage != (*(historic + i) + column)->numberPage){
       count++;
     }
 
-    historic[i][column].timeWaitingRequisition = count;
+    (*(historic + i) + column)->timeWaitingRequisition = count;
   }
 
   for(int i = 0; i < getLineSize(); i++){
-    if(i == 0 || historic[i][column].timeWaitingRequisition > major){
-      major = historic[i][column].timeWaitingRequisition;
+    if(i == 0 || (*(historic + i) + column)->timeWaitingRequisition > major){
+      major = (*(historic + i) + column)->timeWaitingRequisition;
       lineDesired = i;
     }
   }
