@@ -26,13 +26,10 @@ int indexFirstIncludedPage(page **historic, int column){
   for(int i = 0; i < getLineSize(); i++){
       if(i == 0 || first > ((*(historic + i) + column)->firstInclude)){
         first = (*(historic + i) + column)->firstInclude;
-        printf("page %d\n", (*(historic + i) + column)->numberPage);
-        printf("first %d\n", first);
         lineDesired = i;
       }
     }
 
-    printf("lineDesired %d\n", lineDesired);
     return lineDesired;
 }
 
@@ -68,7 +65,6 @@ page** initHistoric(page** historic){
     }
   }
 
-  printPages(historic);
   return (historic);
 }
 
@@ -88,19 +84,23 @@ int theLastPageRequisition(page **historic, page *pages, int column){
   int lineDesired = 0;
 
   for(int i = 0; i < getLineSize(); i++){
-    while(pages[count].numberPage != (*(historic + i) + column)->numberPage){
+    while(pages[count].numberPage != (*(historic + i) + column)->numberPage && count < getColumnSize()){
       count++;
     }
 
     (*(historic + i) + column)->timeWaitingRequisition = count;
+    count = column;
   }
 
   for(int i = 0; i < getLineSize(); i++){
-    if(i == 0 || (*(historic + i) + column)->timeWaitingRequisition > major){
+    if(i == 0){
+      major = (*(historic + i) + column)->timeWaitingRequisition;
+    } else if(major < (*(historic + i) + column)->timeWaitingRequisition){
       major = (*(historic + i) + column)->timeWaitingRequisition;
       lineDesired = i;
     }
   }
+
 
   return (lineDesired);
 }

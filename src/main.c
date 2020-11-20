@@ -16,15 +16,15 @@ int main(int argc, char *argv[]){
 		goto error_output_file;
 
 	core_run(input, output);
-	printf("teste main\n");
+
 	// fclose(input);
-	// fclose(output);
+	fclose(output);
 
 	return(EXIT_SUCCESS);
 
 error_output_file:
 	printf("%s\n", ERROR_OUTPUT_MESSAGE);
-	fclose(input);
+	// fclose(input);
 	return (EXIT_FAILURE);
 
 error_input_file:

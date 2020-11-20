@@ -15,17 +15,14 @@ page** OPT(page *pages, page **historic){
       address = areThereEmptySpaces(j, historic);
       (*(historic + address) + j)->numberPage = pages[j].numberPage;
       (*(historic + address) + j)->firstInclude = j;
-      printf("Page %d\n", (*(historic + address) + j)->numberPage);
-      printf("teste first %d\n", (*(historic + address) + j)->firstInclude);
       misses++;
     }else {
       misses++;
-      lineDesired = indexFirstIncludedPage(historic, j);
+      lineDesired = theLastPageRequisition(historic, pages, j);
       (*(historic + lineDesired) + j)->numberPage = pages[j].numberPage;
       (*(historic + lineDesired) + j)->firstInclude = j;
     }
 
-    printf("pre HIst\n");
     historic = copyLines(historic, (j + 1));
   }
 
@@ -43,8 +40,6 @@ page** FIFO(page *pages, page **historic){
       address = areThereEmptySpaces(j, historic);
       (*(historic + address) + j)->numberPage = pages[j].numberPage;
       (*(historic + address) + j)->firstInclude = j;
-      printf("Page %d\n", (*(historic + address) + j)->numberPage);
-      printf("teste first %d\n", (*(historic + address) + j)->firstInclude);
       misses++;
     }else {
       misses++;
@@ -53,7 +48,6 @@ page** FIFO(page *pages, page **historic){
       (*(historic + lineDesired) + j)->firstInclude = j;
     }
 
-    printf("pre HIst\n");
     historic = copyLines(historic, (j + 1));
   }
 

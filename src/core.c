@@ -21,7 +21,6 @@ void core_run(FILE *input, FILE *output){
 
 	load(input);
 	historic = initHistoric(historic);
-	printPages(historic);
 
 	option = menu();
 
