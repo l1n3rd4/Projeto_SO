@@ -6,7 +6,6 @@
 
 const char *DELIMITER = ",";
 ssize_t array_size;
-//colocar caractere de nova linha
 
 int *readLine(FILE *input, long int position){
 	char *line = NULL;
@@ -46,21 +45,21 @@ int readSizeMemory(FILE *input, long int position){
 	return (size);
 }
 
-void saveHistoric(int **historic, FILE *output){
+void saveHistoric(page **historic, FILE *output){
 	fprintf(output, "EVOLUCAO");
 
 	for(int i = 0; i < getLineSize(); i++){
 		for(int j = 0; j < getColumnSize(); j++){
-			fprintf(output, "%d ", historic);
+			fprintf(output, "%d ", historic[i][j].numberPage);
 		}
 
 		fprintf(output, "\n");
 	}
 }
 
-void saveFinalReport(FILE *output, int hits, int misses, int totalRequisitions, float errorRate){
-	fprintf(output, "ACERTOS \n%d", hits);
-	fprintf(output, "ERROS \n%d" , misses);
-	fprintf(output, "TOTAL REQUISICOES \n%d", totalRequisitions);
-	fprintf(output, "TAXA DE ERRO \n%f", errorRate);
+void saveFinalReport(FILE *output){
+	fprintf(output, "ACERTOS \n%d", getHits());
+	fprintf(output, "ERROS \n%d" , getMisses());
+	fprintf(output, "TOTAL REQUISICOES \n%d", getColumnSize());
+	fprintf(output, "TAXA DE ERRO \n%f", getErrorRate());
 }

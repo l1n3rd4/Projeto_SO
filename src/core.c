@@ -6,13 +6,13 @@
 
 static void load(FILE *input);
 static int menu(void);
-static void execute(int option, int** historic);
-static void flush(FILE *output, int** historic);
+static void execute(int option, page **historic);
+static void flush(FILE *output, page **historic);
 
 page *pages;
 int line_size;
 int column_size;
-int **historic;
+page **historic;
 
 void core_run(FILE *input, FILE *output){
 	line_size = 0;
@@ -21,17 +21,16 @@ void core_run(FILE *input, FILE *output){
 
 	load(input);
 	initHistoric(historic);
-	exibe(historic);
 
 	option = menu();
 
 	execute(option, historic);
 	flush(output, historic);
 
-	// for(int i = 0; i < line_size; i++)
-	// 	free(historic);
+	for(int i = 0; i < line_size; i++)
+		free(historic[i]);
 
-	// free(historic);
+	free(historic);
 }
 
 int getLineSize(void){
@@ -46,7 +45,6 @@ static void load(FILE *input){
 
 	pages = calloc(getLineSize(), sizeof(*pages));
 	IntPages = readLine(input, position);
-	printf("pointer %d\n", IntPages[1]);
 
 	position = ftell(input);
 	memory_size = readSizeMemory(input, position);
@@ -78,7 +76,7 @@ static int menu(void){
 	return (option);
 }
 
-static void execute(int option, int **historic){
+static void execute(int option, page **historic){
 	switch (option) {
 		case 0:
 			exit(EXIT_SUCCESS);
@@ -94,7 +92,7 @@ static void execute(int option, int **historic){
 	}
 }
 
-static void flush(FILE *output, int** historic){
+static void flush(FILE *output, page** historic){
 	saveHistoric(historic, output);
-//	saveFinalReport(output);
+	saveFinalReport(output);
 }

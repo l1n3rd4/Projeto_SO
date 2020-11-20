@@ -1,35 +1,31 @@
 #include <stdlib.h>
 #include "utils.h"
 
-int isThere(int columnNumber, int **historic, int item){
+int isThere(int columnNumber, page **historic, int item){
     for(int i = 0; i < getLineSize(); i++){
-      printf("columnNumber %d\n", columnNumber);
-      printf("%d\n", historic);
-      if(historic[i][columnNumber] == item)
+      if(historic[i][columnNumber].numberPage == item)
         return (i);
     }
 
-    return (-1);
+    return (NOT_FOUND_CODE);
 }
 
-int areThereEmptySpaces(int columnNumber, int **historic, int item){
+int areThereEmptySpaces(int columnNumber, page **historic, int item){
   for(int i = 0; i < getLineSize(); i++){
-    if(historic[i][columnNumber] == 0)
+    if(historic[i][columnNumber].numberPage == 0)
       return (i);
   }
 
-  return (-1);
+  return (NOT_FOUND_CODE);
 }
 
-int indexFirstIncludedPage(page *pages){
+int indexFirstIncludedPage(page **historic, int column){
   int lineDesired = 0;
   int first = 0;
 
   for(int i = 0; i < getLineSize(); i++){
-      if(i == 0){
-        first = pages[i].firstInclude;
-      } else if (first < pages[i].firstInclude){
-        first = pages[i].firstInclude;
+      if(i == 0 || first < historic[i][column].firstInclude){
+        first = historic[i][column].firstInclude;
         lineDesired = i;
       }
     }
@@ -37,27 +33,29 @@ int indexFirstIncludedPage(page *pages){
     return lineDesired;
 }
 
-int** copyLines(int** historic, int column){
+page** copyLines(page** historic, int column){
   for(int i = 0; i < getLineSize(); i++){
-    historic[i][column] = historic[i][column - 1];
+    historic[i][column].numberPage = historic[i][column - 1].numberPage;
+    historic[i][column].firstInclude = historic[i][column - 1].firstInclude;
+    historic[i][column].timeWaitingRequisition = historic[i][column - 1].timeWaitingRequisition;
   }
 
   return (historic);
 }
 
-int** initHistoric(int** historic){
-	historic = (int **) calloc(getLineSize(), sizeof(int*));
+page** initHistoric(page** historic){
+	historic = (page **) calloc(getLineSize(), sizeof(page*));
 
 	if (historic == NULL){
-		printf("** Erro: Memoria Insuficiente **");
+		printf("%s\n", ERROR_INSUFFICIENT_MEMORY_MESSAGE);
 		exit(EXIT_FAILURE);
 	}
 
-	for (int i = 0; i < getColumnSize(); i++ ){
-		historic[i] = (int*) calloc(getColumnSize(), sizeof(int));
+	for (int i = 0; i < getColumnSize(); i++){
+		historic[i] = (page *) calloc(getColumnSize(), sizeof(page));
 
 		if (historic[i] == NULL){
-			printf("** Erro: Memoria Insuficiente **");
+			printf("%s\n", ERROR_INSUFFICIENT_MEMORY_MESSAGE);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -65,16 +63,35 @@ int** initHistoric(int** historic){
   return (historic);
 }
 
-void exibe(int **historic){
-  printf("exibe line %d\n", getLineSize());
-  printf("exibe coluna %d\n", getColumnSize());
-
+void printPages(page **historic){
   for(int i = 0; i < getLineSize(); i++){
     for(int j = 0; j < getColumnSize(); j++){
-       printf("%d ", historic[i][j]);
+       printf("%d ", historic[i][j].numberPage);
     }
 
-    //*(*(historic + i) + j)
     printf("\n");
   }
+}
+
+int theLastPageRequisition(page **historic, page *pages, int column){
+  int count = column;
+  int major = 0;
+  int lineDesired = 0;
+
+  for(int i = 0; i < getLineSize(); i++){
+    while(pages[count].numberPage != historic[i][column].numberPage){
+      count++;
+    }
+
+    historic[i][column].timeWaitingRequisition = count;
+  }
+
+  for(int i = 0; i < getLineSize(); i++){
+    if(i == 0 || historic[i][column].timeWaitingRequisition > major){
+      major = historic[i][column].timeWaitingRequisition;
+      lineDesired = i;
+    }
+  }
+
+  return (lineDesired);
 }
