@@ -1,4 +1,4 @@
-# Projeto_SO
+# Virtual Memory
 
 Project developed under the discipline of Operating Systems - 2020
 
