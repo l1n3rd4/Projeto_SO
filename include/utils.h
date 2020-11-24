@@ -47,7 +47,7 @@ typedef struct PAGE{
 extern int getLineSize(void);
 
 /**
- * @brief Apply the Optimal algorithm to decide which page should be replace
+ * @brief Apply the Optimal(OPT) algorithm to decide which page should be replace
  *
  * @params requisitions array and matrix historic
  *
@@ -56,10 +56,48 @@ extern int getLineSize(void);
 
 extern page** OPT(page *pages, page **historic);
 
+/**
+ * @brief Apply the FIFO(First-in First-out) algorithm to decide which page should be replace
+ *
+ * @params requisitions array and matrix historic
+ *
+ * @returns the matrix historic
+ */
+
 extern page** FIFO(page *pages, page **historic);
+
+/**
+ * @brief Read a line of a file and separate in tokens
+ *
+ * @params File pointer and position in the file
+ *
+ * @returns the requisitions array
+ */
+
 extern int* readLine(FILE *input, long int position);
+
+/**
+ * @brief Write the historic matrix in a file
+ *
+ * @params the historic matrix and file pointer
+ */
+
 extern void saveHistoric(page **historic, FILE *output);
+
+/**
+ * @brief Writes the final result of an algorithm in a file
+ *
+ * @params File pointer
+ */
+
 extern void saveFinalReport(FILE *output);
+
+/**
+ * @brief Calls Load, Execute and flush functions
+ *
+ * @params Input file pointer and output file pointer
+ */
+
 extern void core_run(FILE *input, FILE *output);
 extern int getLineSize(void);
 extern int getColumnSize(void);
