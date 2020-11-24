@@ -53,7 +53,7 @@ void core_run(FILE *input, FILE *output){
 
 	// for(int i = 0; i < line_size; i++)
 	// 	free(historic + i);
-	// //
+	//
 	// free(historic);
 }
 

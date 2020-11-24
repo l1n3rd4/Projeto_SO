@@ -39,8 +39,23 @@ typedef struct PAGE{
 }page;
 
 /*Functions Declarations*/
+
+/**
+ * @returns the size of requisitions of array
+ */
+
 extern int getLineSize(void);
+
+/**
+ * @brief Apply the Optimal algorithm to decide which page should be replace
+ *
+ * @params requisitions array and matrix historic
+ *
+ * @returns the matrix historic
+ */
+
 extern page** OPT(page *pages, page **historic);
+
 extern page** FIFO(page *pages, page **historic);
 extern int* readLine(FILE *input, long int position);
 extern void saveHistoric(page **historic, FILE *output);
