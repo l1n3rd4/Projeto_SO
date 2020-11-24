@@ -41,7 +41,7 @@ typedef struct PAGE{
 /*Functions Declarations*/
 
 /**
- * @returns the size of requisitions of array
+ * @returns the size of memory pages array
  */
 
 extern int getLineSize(void);
@@ -99,11 +99,51 @@ extern void saveFinalReport(FILE *output);
  */
 
 extern void core_run(FILE *input, FILE *output);
-extern int getLineSize(void);
+
+/**
+ * @returns the size of requisitions array
+ */
+
 extern int getColumnSize(void);
+
+/**
+ * @brief Verify if the requisite page is on memory
+ *
+ * @params the index of the requisition, matrix historic and requisite page
+ *
+ * @returns the index of the line where the requisite page is
+ */
+
 extern int isThere(int column, page **historic, int item);
+
+/**
+ * @brief Verify if there's empty spaces on memory
+ *
+ * @params the index of requisition and the historic matrix
+ *
+ * @returns the index of the line where is the empty space
+ */
+
 extern int areThereEmptySpaces(int column, page **historic);
+
+/**
+ * @brief Verify what page is the first include in the historic
+ *
+ * @params Historic matrix and the index of the requisition
+ *
+ * @returns the index of the line where the first included page is
+ */
+
 extern int indexFirstIncludedPage(page **historic, int column);
+
+/**
+ * @brief Copy the previous page of the memory
+ *
+ * @params The historic matrix and the index of the requisition
+ *
+ * @returns the historic matrix
+ */
+
 extern page** copyLines(page** historic, int column);
 extern page** initHistoric(page** historic);
 extern void printPages(page** historic);
