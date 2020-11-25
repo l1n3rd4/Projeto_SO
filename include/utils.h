@@ -145,12 +145,61 @@ extern int indexFirstIncludedPage(page **historic, int column);
  */
 
 extern page** copyLines(page** historic, int column);
+
+/**
+ * @brief Alloc the dinamic memory needed for the historic matrix
+ *
+ * @params The historic matrix
+ *
+ * @returns the historic matrix
+ */
+
 extern page** initHistoric(page** historic);
+
+/**
+ * @brief Print in stdout the historic matrix
+ *
+ * @params The historic matrix
+ */
+
 extern void printPages(page** historic);
+
+/**
+ * @brief Read the size of the virtual memory from a file
+ *
+ * @params File pointer and position on the file
+ *
+ * @returns the size of the virtual memory pages
+ */
+
 extern int readSizeMemory(FILE *input, long int position);
+
+/**
+ * @brief Verify what is the page that will wait for more time until being called
+ *
+ * @params The historic matrix, requisition array and index of the requisition
+ *
+ * @returns The index of the page where should be replace
+ */
+
 extern int theLastPageRequisition(page **historic, page *pages, int column);
+
+/**
+ * @returns the number of hits after the execution of the algorithm
+ */
+
 extern int getHits(void);
+
+/**
+ * @returns the number of misses after the execution of the algorithm
+ */
+
 extern int getMisses(void);
+
+/**
+ * @returns the error rate after the execution of the algorithm 
+ */
+
 extern float getErrorRate(void);
 
 #endif
