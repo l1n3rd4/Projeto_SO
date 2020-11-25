@@ -27,10 +27,33 @@
 
 #include <stdio.h>
 
+/**
+ * @brief String displayed when the memory available is smaller than what the program requisite
+ */
+
 #define ERROR_INSUFFICIENT_MEMORY_MESSAGE "Insufficient memory"
+
+/**
+ * @brief String displayed when the input file cannot be open
+ */
+
 #define ERROR_INPUT_MESSAGE "Error opening input file"
+
+/**
+ * @brief String displayed when the output file cannot be open
+ */
+
 #define ERROR_OUTPUT_MESSAGE "Error opening output file"
+
+/**
+ * @brief Default int returned in functions where the desired value is not found
+ */
+
 #define NOT_FOUND_CODE -1
+
+/**
+ * @brief The structure that holds all informations about pages in memory
+ */
 
 typedef struct PAGE{
   int numberPage;
@@ -197,7 +220,7 @@ extern int getHits(void);
 extern int getMisses(void);
 
 /**
- * @returns the error rate after the execution of the algorithm 
+ * @returns the error rate after the execution of the algorithm
  */
 
 extern float getErrorRate(void);
