@@ -28,17 +28,30 @@
 
 // libncurses
 
+/**
+ * Functions definitions
+*/
+
+
 static void load(FILE *input);
 static int menu(void);
 static void execute(int option, page **historic);
 static void flush(FILE *output, page **historic);
 
+
+// The requisitions array
 page *pages = NULL;
+
+// Virtual Memory size
 int line_size;
+
+// Number of requisitions
 int column_size;
+
+// Historic of pages in Virtual Memory
 page **historic = NULL;
 
-// controls the execution flow of the entire application
+// Controls the execution flow of the entire application
 void core_run(FILE *input, FILE *output){
 	line_size = 0;
 	column_size = 0;
@@ -104,7 +117,7 @@ static int menu(void){
 	return (option);
 }
 
-// calls the chosen page replacement algorithm
+// Calls the chosen page replacement algorithm
 static void execute(int option, page **historic){
 	switch (option) {
 		case 0:
