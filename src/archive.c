@@ -69,6 +69,7 @@ int readSizeMemory(FILE *input, long int position){
 	return (size);
 }
 
+// Save the matrix historic in output file
 void saveHistoric(page **historic, FILE *output){
 	fprintf(output, "EVOLUCAO\n");
 
@@ -85,6 +86,7 @@ void saveHistoric(page **historic, FILE *output){
 	}
 }
 
+// Save in a file relatory of execution of algorithm
 void saveFinalReport(FILE *output){
 	fprintf(output, "ACERTOS \n%d\n", getHits());
 	fprintf(output, "ERROS \n%d\n" , getMisses());
