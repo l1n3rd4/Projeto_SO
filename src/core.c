@@ -38,6 +38,7 @@ int line_size;
 int column_size;
 page **historic = NULL;
 
+// controls the execution flow of the entire application
 void core_run(FILE *input, FILE *output){
 	line_size = 0;
 	column_size = 0;
@@ -57,10 +58,12 @@ void core_run(FILE *input, FILE *output){
 	// free(historic);
 }
 
+// Returns the size of requisitions array
 int getLineSize(void){
 	return (line_size);
 }
 
+// Loads the requisition array
 static void load(FILE *input){
 
 	long int position = 0;
@@ -118,6 +121,7 @@ static void execute(int option, page **historic){
 	}
 }
 
+// Calls functions that save the final data in a file
 static void flush(FILE *output, page** historic){
 	saveHistoric(historic, output);
 	saveFinalReport(output);
