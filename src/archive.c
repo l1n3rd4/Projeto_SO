@@ -59,7 +59,7 @@ int getColumnSize(void){
 	return array_size;
 }
 
-
+// Read the size of Virtual Memory Pages
 int readSizeMemory(FILE *input, long int position){
 	int size;
 
