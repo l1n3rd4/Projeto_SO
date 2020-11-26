@@ -83,6 +83,7 @@ static void load(FILE *input){
 	free(IntPages);
 }
 
+// Display a simple message to choose the page replacement algorithm
 static int menu(void){
 	int option = 0;
 
@@ -100,6 +101,7 @@ static int menu(void){
 	return (option);
 }
 
+// calls the chosen page replacement algorithm
 static void execute(int option, page **historic){
 	switch (option) {
 		case 0:
