@@ -28,9 +28,11 @@
 #include <string.h>
 #include "utils.h"
 
+// char that separates pages in a default file
 const char *DELIMITER = ",";
 ssize_t array_size;
 
+// Read a line of given file and return an array of int
 int *readLine(FILE *input, long int position){
 	char *line = NULL;
 	char *token = NULL;
