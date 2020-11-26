@@ -116,7 +116,7 @@ extern void saveHistoric(page **historic, FILE *output);
 extern void saveFinalReport(FILE *output);
 
 /**
- * @brief Calls Load, Execute and flush functions
+ * @brief Control the execution of the entire application
  *
  * @params Input file pointer and output file pointer
  */

@@ -22,20 +22,47 @@
  * SOFTWARE.
  */
 
+// Theirs
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils.h"
 
-// libncurses
+// My Lib
+#include "utils.h"
 
 /**
  * Functions definitions
 */
 
+/**
+ * @brief Read data from a file and allocate the requisition array
+ *
+ * @params File pointer
+ */
 
 static void load(FILE *input);
+
+/**
+ * @brief Display a simple message showing the number of the page replacement algorithm
+ *
+ * @returns the int that specify the page replacement algorithm
+ */
+
 static int menu(void);
+
+/**
+ * @brief Call function of chosen page replacement algorithm
+ *
+ * @params int that identify the algorithm and historic matrix
+ */
+
 static void execute(int option, page **historic);
+
+/**
+ * @brief Call functions that save data in a file
+ *
+ * @params File pointer and the historic matrix
+ */
+
 static void flush(FILE *output, page **historic);
 
 
