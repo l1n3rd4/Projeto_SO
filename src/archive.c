@@ -22,14 +22,19 @@
  * SOFTWARE.
  */
 
+//Their libs
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+// My lib
 #include "utils.h"
 
-// char that separates pages in a default file
+// Char that separates pages in a default file
 const char *DELIMITER = ",";
+
+// Number of requisitions
 ssize_t array_size;
 
 // Read a line of given file and return an array of int
@@ -84,8 +89,8 @@ void saveHistoric(page **historic, FILE *output){
 			}
 		}
 
-		fprintf(output, "\n");
 	}
+	fprintf(output, "\n");
 }
 
 // Save in a file relatory of execution of algorithm
