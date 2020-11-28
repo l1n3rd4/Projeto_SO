@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
- 
+
 #include "utils.h"
 
 int hits = 0;
@@ -78,14 +78,17 @@ page** FIFO(page *pages, page **historic){
   return (historic);
 }
 
+//Returns the number of hits
 int getHits(void){
   return (hits);
 }
 
+// Returns the number of misses
 int getMisses(void){
   return (misses);
 }
 
+// Returns error rate of executed algorithm
 float getErrorRate(void){
   return ((1.0 * misses)/getColumnSize());
 }
