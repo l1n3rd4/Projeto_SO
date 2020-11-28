@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include "utils.h"
 
+//Verify if the page requisited is on Memory
 int isThere(int column, page **historic, int item){
     for(int i = 0; i < getLineSize(); i++){
       if((*(historic + i) + column)->numberPage == item)
