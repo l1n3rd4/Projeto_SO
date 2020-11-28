@@ -35,7 +35,7 @@ int isThere(int column, page **historic, int item){
     return (NOT_FOUND_CODE);
 }
 
-// Verify if there is empty spaces on memory  
+// Verify if there is empty spaces on memory
 int areThereEmptySpaces(int column, page **historic){
   for(int i = 0; i < getLineSize(); i++){
     if((*(historic + i) + column)->numberPage == 0)
@@ -45,6 +45,7 @@ int areThereEmptySpaces(int column, page **historic){
   return (NOT_FOUND_CODE);
 }
 
+// Look for the first page included on memory
 int indexFirstIncludedPage(page **historic, int column){
   int lineDesired = 0;
   int first = 0;
