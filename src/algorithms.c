@@ -22,12 +22,14 @@
  * SOFTWARE.
  */
 
+// My lib
 #include "utils.h"
 
 int hits = 0;
 int misses = 0;
 float errorRate = 0;
 
+// Function that implements the optimal algorithm
 page** OPT(page *pages, page **historic){
   int address = 0;
   int lineDesired;
@@ -53,6 +55,7 @@ page** OPT(page *pages, page **historic){
   return (historic);
 }
 
+// Function that implements the First in First out algorithm
 page** FIFO(page *pages, page **historic){
   int address = 0;
   int lineDesired;
