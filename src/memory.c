@@ -35,6 +35,7 @@ int isThere(int column, page **historic, int item){
     return (NOT_FOUND_CODE);
 }
 
+// Verify if there is empty spaces on memory  
 int areThereEmptySpaces(int column, page **historic){
   for(int i = 0; i < getLineSize(); i++){
     if((*(historic + i) + column)->numberPage == 0)
