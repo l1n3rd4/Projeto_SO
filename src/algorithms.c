@@ -25,6 +25,7 @@
 // My lib
 #include "utils.h"
 
+//global variables
 int hits = 0;
 int misses = 0;
 float errorRate = 0;
