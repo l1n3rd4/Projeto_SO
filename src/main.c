@@ -21,11 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
- 
+
+ //Theirs
 #include <stdio.h>
 #include <stdlib.h>
+
+// My lib
 #include "utils.h"
 
+/* *
+ *  Open input and output files and deliver  
+ *  then to core_run function
+ */
 int main(int argc, char *argv[]){
 	FILE *input, *output;
 
