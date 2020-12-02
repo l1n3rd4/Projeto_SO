@@ -30,8 +30,12 @@
 #include "utils.h"
 
 /* *
- *  Open input and output files and deliver  
- *  then to core_run function
+ *  @brief Open input and output files and deliver
+ *         then to core_run function
+ *
+ *  @param Input file
+ *
+ *  @return A integer meaning exit successful or failure
  */
 int main(int argc, char *argv[]){
 	FILE *input, *output;
