@@ -111,6 +111,7 @@ void printPages(page **historic){
   }
 }
 
+// Discover the page that won't be called for the longest time 
 int theLastPageRequisition(page **historic, page *pages, int column){
   int count = column;
   int major = 0;
