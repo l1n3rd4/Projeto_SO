@@ -22,7 +22,10 @@
  * SOFTWARE.
  */
 
+//theirs
 #include <stdlib.h>
+
+//Mylib
 #include "utils.h"
 
 //Verify if the page requisited is on Memory
@@ -60,6 +63,7 @@ int indexFirstIncludedPage(page **historic, int column){
     return lineDesired;
 }
 
+// Copy the page of previous position in the actual page 
 page** copyLines(page** historic, int column){
   for(int i = 0; i <= getLineSize(); i++){
     (*(historic + i) + column)->numberPage  = (*(historic + i) + (column - 1))->numberPage;
