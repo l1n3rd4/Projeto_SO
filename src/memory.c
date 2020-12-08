@@ -63,7 +63,7 @@ int indexFirstIncludedPage(page **historic, int column){
     return lineDesired;
 }
 
-// Copy the page of previous position in the actual page 
+// Copy the page of previous position in the actual page
 page** copyLines(page** historic, int column){
   for(int i = 0; i <= getLineSize(); i++){
     (*(historic + i) + column)->numberPage  = (*(historic + i) + (column - 1))->numberPage;
@@ -73,6 +73,7 @@ page** copyLines(page** historic, int column){
   return (historic);
 }
 
+// Allocates that necessary memory for necessary matrix
 page** initHistoric(page** historic){
 	historic = (page **) calloc(getLineSize(), sizeof(page*));
 
@@ -99,6 +100,7 @@ page** initHistoric(page** historic){
   return (historic);
 }
 
+// Displays on stdout a given matrix
 void printPages(page **historic){
   for(int i = 0; i < getLineSize(); i++){
     for(int j = 0; j < getColumnSize(); j++){
