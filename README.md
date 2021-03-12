@@ -13,3 +13,4 @@ cmake ..
 make
 ./project [input-file]
 ```
+teste
